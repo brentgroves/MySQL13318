@@ -15,7 +15,7 @@ function insert(plexRec) {
 
   con.connect(function(err) {
     let sql =
-      `insert into Control_Panel_Setup_Containers_Get (` +
+      `insert into DS13318 (` +
       `TransDate,PCN,ProdServer,Cycle_Counter_Shift_SL,Part_No,Name,Multiple, ` +
       `Container_Note,Cavity_Status_Key,Container_Status, ` +
       `Defect_Type,Serial_No,Setup_Container_Key,Count, ` +
