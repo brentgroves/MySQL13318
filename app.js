@@ -1,17 +1,11 @@
 const mysql = require('mysql');
 const mqtt = require('mqtt');
 const ObjectToMySql = require('./ObjectToMySql');
+const config = require('../Config13318/config.json');
 
 function insert(plexRec) {
   var p = ObjectToMySql.ObjectToMySql(plexRec);
-  var con = mysql.createConnection({
-    // host: 'ec2-3-14-133-181.us-east-2.compute.amazonaws.com',
-    host: 'localhost',
-    user: 'brent',
-    password: 'JesusLives1!',
-    insecureAuth: true,
-    database: 'mach2',
-  });
+  var con = mysql.createConnection(config.Database);
 
   con.connect(function(err) {
     let sql =
@@ -38,17 +32,12 @@ function insert(plexRec) {
     if (err) throw err;
     con.query(sql, function(err, result) {
       if (err) throw err;
-      console.log('Result: ' + result);
     });
   });
 }
 
 function main() {
-  let mqttClient = mqtt.connect(
-    // 'mqtt://ec2-3-15-151-115.us-east-2.compute.amazonaws.com',
-    // 'mqtt://test.mosquitto.org'
-    'mqtt://localhost',
-  );
+  let mqttClient = mqtt.connect(config.MQTT);
 
   mqttClient.on('connect', function() {
     mqttClient.subscribe('Plex13318', function(err) {
@@ -60,9 +49,7 @@ function main() {
   // message is a buffer
   mqttClient.on('message', function(topic, message) {
     const params = JSON.parse(message.toString()); // payload is a buffer
-    // console.log(params);
     insert(params);
   });
 }
 main();
-
