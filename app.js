@@ -45,7 +45,7 @@ function insert(plexRec) {
 
 function main() {
   let mqttClient = mqtt.connect(
-    // 'mqtt://ec2-18-218-2-29.us-east-2.compute.amazonaws.com',
+    // 'mqtt://ec2-3-15-151-115.us-east-2.compute.amazonaws.com',
     // 'mqtt://test.mosquitto.org'
     'mqtt://localhost',
   );
