@@ -28,7 +28,7 @@ function insert(plexRec) {
       `"${p.Default_Printer}",${p.Default_Printer_Key},${p.Class_Key},${p.Quantity},${p.Companion}, ` +
       `"${p.Container_Type}","${p.Container_Type_Description}",${p.Sort_Order} ` +
       `)`;
-    console.log(sql);
+    console.log(`MySql => ${p.TransDate} `);
     if (err) throw err;
     con.query(sql, function(err, result) {
       if (err) throw err;
