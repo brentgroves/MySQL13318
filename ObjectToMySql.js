@@ -5,7 +5,6 @@ module.exports.ObjectToMySql = function(params) {
     Control_Panel_Setup_Containers_Get_Key: 'int',
     TransDate: 'datetime',
     ProdServer: 'bool',
-    Cycle_Counter_Shift_SL: 'int',
     Part_No: 'varchar',
     Name: 'varchar',
     Multiple: 'bool',
